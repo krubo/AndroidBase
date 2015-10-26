@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
@@ -13,12 +14,12 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 
 /**
- * Activity 基类，设置OnTouchLinstener可以右滑退出
+ * FragmentActivity 基类，设置OnTouchLinstener可以右滑退出
  * 
  * @author krubo
  *
  */
-public abstract class BaseActivity extends Activity implements OnTouchListener, OnGestureListener {
+public abstract class BaseFragmentActivity extends FragmentActivity implements OnTouchListener, OnGestureListener {
 
 	protected Activity activity;
 	protected Context context;

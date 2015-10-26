@@ -20,7 +20,9 @@ public class LogUtils {
 	}
 
 	public static void v(Context context, int resId) {
-		v(context.getString(resId));
+		if (ConstantBase.DEBUG_LOG) {
+			v(context.getString(resId));
+		}
 	}
 
 	public static void d(String msg) {
@@ -30,7 +32,9 @@ public class LogUtils {
 	}
 
 	public static void d(Context context, int resId) {
-		d(context.getString(resId));
+		if (ConstantBase.DEBUG_LOG) {
+			d(context.getString(resId));
+		}
 	}
 
 	public static void i(String msg) {
@@ -40,7 +44,9 @@ public class LogUtils {
 	}
 
 	public static void i(Context context, int resId) {
-		i(context.getString(resId));
+		if (ConstantBase.DEBUG_LOG) {
+			i(context.getString(resId));
+		}
 	}
 
 	public static void w(String msg) {
@@ -50,7 +56,9 @@ public class LogUtils {
 	}
 
 	public static void w(Context context, int resId) {
-		w(context.getString(resId));
+		if (ConstantBase.DEBUG_LOG) {
+			w(context.getString(resId));
+		}
 	}
 
 	public static void e(String msg) {
@@ -60,6 +68,8 @@ public class LogUtils {
 	}
 
 	public static void e(Context context, int resId) {
-		e(context.getString(resId));
+		if (ConstantBase.DEBUG_LOG) {
+			e(context.getString(resId));
+		}
 	}
 }

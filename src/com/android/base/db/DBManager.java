@@ -38,10 +38,8 @@ public class DBManager {
 		}
 	}
 
-	public SQLiteDatabase getDb() {
-		synchronized (db) {
-			return db;
-		}
+	public synchronized SQLiteDatabase getDb() {
+		return db;
 	}
 
 	/**

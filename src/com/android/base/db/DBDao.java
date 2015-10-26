@@ -10,7 +10,6 @@ import com.android.base.utils.StringUtils;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 /**
  * 数据库基础操作DAO
@@ -20,13 +19,11 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public class DBDao<T> {
 
-	protected SQLiteDatabase db;
 	protected String table;
 	protected Class<T> cls;
 
 	public DBDao(Class<T> cls) {
 		super();
-		this.db = DBManager.getInstance().getDb();
 		this.cls = cls;
 		this.table = this.cls.getAnnotation(DBTableName.class).tableName();
 	}
@@ -64,9 +61,9 @@ public class DBDao<T> {
 	 * @param t
 	 */
 	public void insert(T t) {
-		if (db != null && t != null) {
+		if (t != null) {
 			ContentValues values = getContentVlues(t);
-			db.insert(table, null, values);
+			DBManager.getInstance().getDb().insert(table, null, values);
 		}
 	}
 
@@ -92,9 +89,9 @@ public class DBDao<T> {
 	 * @param whereArgs
 	 */
 	public void update(T t, String whereClause, String[] whereArgs) {
-		if (db != null && t != null) {
+		if (t != null) {
 			ContentValues values = getContentVlues(t);
-			db.update(table, values, whereClause, whereArgs);
+			DBManager.getInstance().getDb().update(table, values, whereClause, whereArgs);
 		}
 	}
 
@@ -110,50 +107,49 @@ public class DBDao<T> {
 	 */
 	public List<T> query(String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
 		List<T> list = new ArrayList<>();
-		if (db != null) {
-			Cursor cursor = null;
-			try {
-				cursor = db.query(table, null, selection, selectionArgs, groupBy, having, orderBy);
-				while (cursor.moveToNext()) {
-					T t = cls.newInstance();
-					if (t == null) {
-						continue;
-					}
-					Field[] fields = t.getClass().getDeclaredFields();
-					Field.setAccessible(fields, true);
-					for (Field field : fields) {
-						if (field.getAnnotation(DBField.class) != null) {
-							String type = field.getType().toString();
-							String value = cursor.getString(cursor.getColumnIndex(field.getName()));
-							if (type.endsWith("String")) {
-								field.set(t, value + "");
-							} else if (type.endsWith("boolean") || type.endsWith("Boolean")) {
-								field.setBoolean(t, (value == null || value.equals("false") ? false : true));
-							} else if (type.endsWith("int") || type.endsWith("Integer")) {
-								field.setInt(t, StringUtils.isEmptyByTrim(value) ? 0 : Integer.valueOf(value));
-							} else if (type.endsWith("float") || type.endsWith("Float")) {
-								field.setFloat(t, StringUtils.isEmptyByTrim(value) ? 0 : Float.valueOf(value));
-							} else if (type.endsWith("double") || type.endsWith("Double")) {
-								field.setDouble(t, StringUtils.isEmptyByTrim(value) ? 0 : Double.valueOf(value));
-							} else if (type.endsWith("long") || type.endsWith("Long")) {
-								field.setLong(t, StringUtils.isEmptyByTrim(value) ? 0 : Long.valueOf(value));
-							} else if (type.endsWith("short") || type.equals("Short")) {
-								field.setShort(t, StringUtils.isEmptyByTrim(value) ? 0 : Short.valueOf(value));
-							}
+		Cursor cursor = null;
+		try {
+			cursor = DBManager.getInstance().getDb().query(table, null, selection, selectionArgs, groupBy, having,
+					orderBy);
+			while (cursor.moveToNext()) {
+				T t = cls.newInstance();
+				if (t == null) {
+					continue;
+				}
+				Field[] fields = t.getClass().getDeclaredFields();
+				Field.setAccessible(fields, true);
+				for (Field field : fields) {
+					if (field.getAnnotation(DBField.class) != null) {
+						String type = field.getType().toString();
+						String value = cursor.getString(cursor.getColumnIndex(field.getName()));
+						if (type.endsWith("String")) {
+							field.set(t, value + "");
+						} else if (type.endsWith("boolean") || type.endsWith("Boolean")) {
+							field.setBoolean(t, (value == null || value.equals("false") ? false : true));
+						} else if (type.endsWith("int") || type.endsWith("Integer")) {
+							field.setInt(t, StringUtils.isEmptyByTrim(value) ? 0 : Integer.valueOf(value));
+						} else if (type.endsWith("float") || type.endsWith("Float")) {
+							field.setFloat(t, StringUtils.isEmptyByTrim(value) ? 0 : Float.valueOf(value));
+						} else if (type.endsWith("double") || type.endsWith("Double")) {
+							field.setDouble(t, StringUtils.isEmptyByTrim(value) ? 0 : Double.valueOf(value));
+						} else if (type.endsWith("long") || type.endsWith("Long")) {
+							field.setLong(t, StringUtils.isEmptyByTrim(value) ? 0 : Long.valueOf(value));
+						} else if (type.endsWith("short") || type.equals("Short")) {
+							field.setShort(t, StringUtils.isEmptyByTrim(value) ? 0 : Short.valueOf(value));
 						}
 					}
-					list.add(t);
 				}
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				list.add(t);
 			}
-			if (cursor != null) {
-				cursor.close();
-			}
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (cursor != null) {
+			cursor.close();
 		}
 		return list;
 	}
@@ -171,9 +167,7 @@ public class DBDao<T> {
 	 * 删除所有数据
 	 */
 	public void deleteAll() {
-		if (db != null) {
-			db.delete(table, null, null);
-		}
+		DBManager.getInstance().getDb().delete(table, null, null);
 	}
 
 	/**
@@ -183,9 +177,7 @@ public class DBDao<T> {
 	 * @param whereArgs
 	 */
 	public void delete(String whereClause, String[] whereArgs) {
-		if (db != null) {
-			db.delete(table, whereClause, whereArgs);
-		}
+		DBManager.getInstance().getDb().delete(table, whereClause, whereArgs);
 	}
 
 	/**
@@ -232,10 +224,7 @@ public class DBDao<T> {
 	 * 删除当前表
 	 */
 	public void dropTable() {
-		if (db != null) {
-			String sql = "DROP TABLE " + table;
-			db.execSQL(sql);
-		}
+		DBManager.getInstance().getDb().execSQL("DROP TABLE " + table);
 	}
 
 	/**
@@ -246,17 +235,33 @@ public class DBDao<T> {
 	public boolean isEmptyTable() {
 		// 返回true为空，
 		boolean flag = true;
-		if (db != null) {
-			Cursor cursor = db.query(table, null, null, null, null, null, null);
-			int x = cursor.getCount();
-			cursor.close();
-			if (x == 0) {
-				flag = true;
-			} else {
-				flag = false;
-			}
+		Cursor cursor = DBManager.getInstance().getDb().query(table, null, null, null, null, null, null);
+		int x = cursor.getCount();
+		cursor.close();
+		if (x == 0) {
+			flag = true;
+		} else {
+			flag = false;
 		}
 		return flag;
 	}
 
+	/**
+	 * 执行sql语句
+	 * 
+	 * @param sql
+	 */
+	public void execSQL(String sql) {
+		DBManager.getInstance().getDb().execSQL(sql);
+	}
+
+	/**
+	 * 执行sql语句
+	 * 
+	 * @param sql
+	 * @param bindArgs
+	 */
+	public void execSQL(String sql, Object[] bindArgs) {
+		DBManager.getInstance().getDb().execSQL(sql, bindArgs);
+	}
 }

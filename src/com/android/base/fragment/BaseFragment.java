@@ -1,27 +1,31 @@
-package com.android.base.activity;
+package com.android.base.fragment;
 
 import com.android.base.listener.OnSingleClickListener;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 
 /**
- * Activity 基类，设置OnTouchLinstener可以右滑退出
+ * Fragment 基类，设置OnTouchLinstener可以右滑退出
  * 
  * @author krubo
  *
  */
-public abstract class BaseActivity extends Activity implements OnTouchListener, OnGestureListener {
+public abstract class BaseFragment extends Fragment implements OnTouchListener, OnGestureListener {
 
 	protected Activity activity;
 	protected Context context;
+	protected View contentView;
 	private GestureDetector gestureDetector;
 
 	protected OnSingleClickListener OnSingleClickListener = new OnSingleClickListener() {
@@ -34,16 +38,21 @@ public abstract class BaseActivity extends Activity implements OnTouchListener, 
 	};
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.activity = this;
-		this.context = getApplicationContext();
+		this.activity = getActivity();
+		this.context = getActivity().getApplicationContext();
 		this.gestureDetector = new GestureDetector(this.context, this);
 		beforeInitView(savedInstanceState);
-		setContentView(setLayout());
+	};
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		contentView = inflater.inflate(setLayout(), null);
 		initView();
 		afterInitView();
+		return contentView;
 	}
 
 	/**
@@ -107,13 +116,15 @@ public abstract class BaseActivity extends Activity implements OnTouchListener, 
 	/**
 	 * 初始化控件
 	 * 
+	 * @param view
+	 *            布局
 	 * @param id
 	 *            控件Id
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	protected <T extends View> T findView(int id) {
-		return (T) findViewById(id);
+	protected <T extends View> T findView(View view, int id) {
+		return (T) view.findViewById(id);
 	}
 
 	/**
@@ -174,7 +185,7 @@ public abstract class BaseActivity extends Activity implements OnTouchListener, 
 	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
 		// TODO Auto-generated method stub
 		if (Math.abs(velocityX) > Math.abs(velocityY) && e2.getX() - e1.getX() > 200 && Math.abs(velocityX) > 0) {
-			finish();
+			activity.finish();
 		}
 		return false;
 	}
