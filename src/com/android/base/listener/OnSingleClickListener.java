@@ -19,7 +19,6 @@ public abstract class OnSingleClickListener implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		long currentTime = System.currentTimeMillis();
 		if (lastTime == 0 || currentTime - lastTime < SPACE_TIME) {
 			ToastUtils.showMustShort(v.getContext(), R.string.single_click);

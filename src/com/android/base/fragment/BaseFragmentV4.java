@@ -32,7 +32,6 @@ public abstract class BaseFragmentV4 extends Fragment implements OnTouchListener
 
 		@Override
 		public void onSingleClick(View v) {
-			// TODO Auto-generated method stub
 			onSingleClick(v);
 		}
 	};
@@ -48,7 +47,6 @@ public abstract class BaseFragmentV4 extends Fragment implements OnTouchListener
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		contentView = inflater.inflate(setLayout(), null);
 		initView();
 		afterInitView();
@@ -153,37 +151,31 @@ public abstract class BaseFragmentV4 extends Fragment implements OnTouchListener
 
 	@Override
 	public boolean onDown(MotionEvent e) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void onShowPress(MotionEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public boolean onSingleTapUp(MotionEvent e) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void onLongPress(MotionEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-		// TODO Auto-generated method stub
 		if (Math.abs(velocityX) > Math.abs(velocityY) && e2.getX() - e1.getX() > 200 && Math.abs(velocityX) > 0) {
 			activity.finish();
 		}
@@ -192,7 +184,6 @@ public abstract class BaseFragmentV4 extends Fragment implements OnTouchListener
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
-		// TODO Auto-generated method stub
 		return gestureDetector.onTouchEvent(event);
 	}
 

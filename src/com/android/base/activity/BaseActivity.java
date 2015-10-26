@@ -1,5 +1,6 @@
 package com.android.base.activity;
 
+import com.android.base.AppData;
 import com.android.base.listener.OnSingleClickListener;
 
 import android.app.Activity;
@@ -28,14 +29,24 @@ public abstract class BaseActivity extends Activity implements OnTouchListener, 
 
 		@Override
 		public void onSingleClick(View v) {
-			// TODO Auto-generated method stub
 			onSingleClick(v);
 		}
 	};
 
 	@Override
+	protected void onStart() {
+		super.onStart();
+		AppData.getInstance().addActivity(this);
+	};
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		AppData.getInstance().removeActivity(this);
+	}
+
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		this.activity = this;
 		this.context = getApplicationContext();
@@ -142,37 +153,31 @@ public abstract class BaseActivity extends Activity implements OnTouchListener, 
 
 	@Override
 	public boolean onDown(MotionEvent e) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void onShowPress(MotionEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public boolean onSingleTapUp(MotionEvent e) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void onLongPress(MotionEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-		// TODO Auto-generated method stub
 		if (Math.abs(velocityX) > Math.abs(velocityY) && e2.getX() - e1.getX() > 200 && Math.abs(velocityX) > 0) {
 			finish();
 		}
@@ -181,7 +186,6 @@ public abstract class BaseActivity extends Activity implements OnTouchListener, 
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
-		// TODO Auto-generated method stub
 		return gestureDetector.onTouchEvent(event);
 	}
 

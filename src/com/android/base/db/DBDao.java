@@ -44,10 +44,8 @@ public class DBDao<T> {
 					Object value = field.get(t);
 					values.put(field.getName(), value == null ? "" : value + "");
 				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -142,10 +140,8 @@ public class DBDao<T> {
 				list.add(t);
 			}
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (cursor != null) {
@@ -206,10 +202,8 @@ public class DBDao<T> {
 					}
 					whereArgs.add(value == null ? "" : value + "");
 				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
