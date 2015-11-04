@@ -9,7 +9,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * Êı¾İ¿â²Ù×÷Àà
+ * æ•°æ®åº“æ“ä½œç±»
  * 
  * @author krubo
  *
@@ -43,7 +43,7 @@ public class DBManager {
 	}
 
 	/**
-	 * ´´½¨±í
+	 * åˆ›å»ºè¡¨
 	 * 
 	 * @param cls
 	 * @param db

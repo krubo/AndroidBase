@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 /**
- * 规定时间内只能有一个控件被点击
+ * 瑙勫畾鏃堕棿鍐呭彧鑳芥湁涓�涓帶浠惰鐐瑰嚮
  * 
  * @author krubo
  *

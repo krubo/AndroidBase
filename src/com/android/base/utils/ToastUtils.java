@@ -26,7 +26,7 @@ public class ToastUtils {
 	}
 
 	/**
-	 * ±ØĞëÏÔÊ¾£¬Ê±¼ä¶Ì
+	 * å¿…é¡»æ˜¾ç¤ºï¼Œæ—¶é—´çŸ­
 	 * 
 	 * @param context
 	 * @param resId
@@ -36,7 +36,7 @@ public class ToastUtils {
 	}
 
 	/**
-	 * ±ØĞëÏÔÊ¾£¬Ê±¼ä¶Ì
+	 * å¿…é¡»æ˜¾ç¤ºï¼Œæ—¶é—´çŸ­
 	 * 
 	 * @param context
 	 * @param text
@@ -46,7 +46,7 @@ public class ToastUtils {
 	}
 
 	/**
-	 * ±ØĞëÏÔÊ¾£¬Ê±¼ä³¤
+	 * å¿…é¡»æ˜¾ç¤ºï¼Œæ—¶é—´é•¿
 	 * 
 	 * @param context
 	 * @param resId
@@ -56,7 +56,7 @@ public class ToastUtils {
 	}
 
 	/**
-	 * ±ØĞëÏÔÊ¾£¬Ê±¼ä³¤
+	 * å¿…é¡»æ˜¾ç¤ºï¼Œæ—¶é—´é•¿
 	 * 
 	 * @param context
 	 * @param text
@@ -66,7 +66,7 @@ public class ToastUtils {
 	}
 
 	/**
-	 * ·Ç±ØĞëÏÔÊ¾£¬Ê±¼ä¶Ì
+	 * éå¿…é¡»æ˜¾ç¤ºï¼Œæ—¶é—´çŸ­
 	 * 
 	 * @param context
 	 * @param resId
@@ -76,7 +76,7 @@ public class ToastUtils {
 	}
 
 	/**
-	 * ·Ç±ØĞëÏÔÊ¾£¬Ê±¼ä¶Ì
+	 * éå¿…é¡»æ˜¾ç¤ºï¼Œæ—¶é—´çŸ­
 	 * 
 	 * @param context
 	 * @param text
@@ -86,7 +86,7 @@ public class ToastUtils {
 	}
 
 	/**
-	 * ·Ç±ØĞëÏÔÊ¾£¬Ê±¼ä³¤
+	 * éå¿…é¡»æ˜¾ç¤ºï¼Œæ—¶é—´é•¿
 	 * 
 	 * @param context
 	 * @param resId
@@ -96,7 +96,7 @@ public class ToastUtils {
 	}
 
 	/**
-	 * ·Ç±ØĞëÏÔÊ¾£¬Ê±¼ä³¤
+	 * éå¿…é¡»æ˜¾ç¤ºï¼Œæ—¶é—´é•¿
 	 * 
 	 * @param context
 	 * @param text

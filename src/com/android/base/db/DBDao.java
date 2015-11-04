@@ -12,7 +12,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 /**
- * Êı¾İ¿â»ù´¡²Ù×÷DAO
+ * æ•°æ®åº“åŸºç¡€æ“ä½œDAO
  * 
  * @author krubo
  *
@@ -29,7 +29,7 @@ public class DBDao<T> {
 	}
 
 	/**
-	 * »ñÈ¡ContentVlues
+	 * è·å–ContentVlues
 	 * 
 	 * @param t
 	 * @return
@@ -54,7 +54,7 @@ public class DBDao<T> {
 	}
 
 	/**
-	 * ²åÈëµ¥ÌõÊı¾İ
+	 * æ’å…¥å•æ¡æ•°æ®
 	 * 
 	 * @param t
 	 */
@@ -66,7 +66,7 @@ public class DBDao<T> {
 	}
 
 	/**
-	 * ²åÈë¶àÌõÊı¾İ
+	 * æ’å…¥å¤šæ¡æ•°æ®
 	 * 
 	 * @param list
 	 */
@@ -80,7 +80,7 @@ public class DBDao<T> {
 	}
 
 	/**
-	 * ĞŞ¸Äµ¥ÌõÊı¾İ
+	 * ä¿®æ”¹å•æ¡æ•°æ®
 	 * 
 	 * @param t
 	 * @param whereClause
@@ -94,7 +94,7 @@ public class DBDao<T> {
 	}
 
 	/**
-	 * ¸ù¾İÌõ¼şÈ¡³öÊı¾İ
+	 * æ ¹æ®æ¡ä»¶å–å‡ºæ•°æ®
 	 * 
 	 * @param selection
 	 * @param selectionArgs
@@ -151,7 +151,7 @@ public class DBDao<T> {
 	}
 
 	/**
-	 * È¡³öËùÓĞÊı¾İ
+	 * å–å‡ºæ‰€æœ‰æ•°æ®
 	 * 
 	 * @return
 	 */
@@ -160,14 +160,14 @@ public class DBDao<T> {
 	}
 
 	/**
-	 * É¾³ıËùÓĞÊı¾İ
+	 * åˆ é™¤æ‰€æœ‰æ•°æ®
 	 */
 	public void deleteAll() {
 		DBManager.getInstance().getDb().delete(table, null, null);
 	}
 
 	/**
-	 * ¸ù¾İÌõ¼şÉ¾³ıÊı¾İ
+	 * æ ¹æ®æ¡ä»¶åˆ é™¤æ•°æ®
 	 * 
 	 * @param whereClause
 	 * @param whereArgs
@@ -177,7 +177,7 @@ public class DBDao<T> {
 	}
 
 	/**
-	 * ¸ù¾İÊµÌåÀàÉ¾³ıÊı¾İ
+	 * æ ¹æ®å®ä½“ç±»åˆ é™¤æ•°æ®
 	 * 
 	 * @param t
 	 */
@@ -215,19 +215,19 @@ public class DBDao<T> {
 	}
 
 	/**
-	 * É¾³ıµ±Ç°±í
+	 * åˆ é™¤å½“å‰è¡¨
 	 */
 	public void dropTable() {
 		DBManager.getInstance().getDb().execSQL("DROP TABLE " + table);
 	}
 
 	/**
-	 * ¼ì²é±íÊÇ·ñÎª¿Õ
+	 * æ£€æŸ¥è¡¨æ˜¯å¦ä¸ºç©º
 	 * 
-	 * @return true Îª¿Õ
+	 * @return true ä¸ºç©º
 	 */
 	public boolean isEmptyTable() {
-		// ·µ»ØtrueÎª¿Õ£¬
+		// è¿”å›trueä¸ºç©ºï¼Œ
 		boolean flag = true;
 		Cursor cursor = DBManager.getInstance().getDb().query(table, null, null, null, null, null, null);
 		int x = cursor.getCount();
@@ -241,7 +241,7 @@ public class DBDao<T> {
 	}
 
 	/**
-	 * Ö´ĞĞsqlÓï¾ä
+	 * æ‰§è¡Œsqlè¯­å¥
 	 * 
 	 * @param sql
 	 */
@@ -250,7 +250,7 @@ public class DBDao<T> {
 	}
 
 	/**
-	 * Ö´ĞĞsqlÓï¾ä
+	 * æ‰§è¡Œsqlè¯­å¥
 	 * 
 	 * @param sql
 	 * @param bindArgs

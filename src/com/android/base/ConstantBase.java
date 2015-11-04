@@ -2,10 +2,10 @@ package com.android.base;
 
 public class ConstantBase {
 
-	/** 是否显示LOG日志，true显示 */
+	/** 鏄惁鏄剧ずLOG鏃ュ織锛宼rue鏄剧ず */
 	public static boolean DEBUG_LOG = true;
-	/** 是否显示非必需的Toast，true显示 */
+	/** 鏄惁鏄剧ず闈炲繀闇�鐨凾oast锛宼rue鏄剧ず */
 	public static boolean DEBUG_TOAST = true;
-	/** sharedpreference默认名字 */
+	/** sharedpreference榛樿鍚嶅瓧 */
 	public static String SHAREDPRE_BASE_NAME = "sharedpre_base_name";
 }

@@ -16,7 +16,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 
 /**
- * Fragment »ùÀà£¬ÉèÖÃOnTouchLinstener¿ÉÒÔÓÒ»¬ÍË³ö
+ * Fragment åŸºç±»ï¼Œè®¾ç½®OnTouchLinstenerå¯ä»¥å³æ»‘é€€å‡º
  * 
  * @author krubo
  *
@@ -58,66 +58,66 @@ public abstract class BaseFragment extends Fragment implements OnTouchListener, 
 	 * 
 	 * @param newConfig,
 	 *            The new device configuration.
-	 *            µ±Éè±¸ÅäÖÃĞÅÏ¢ÓĞ¸Ä¶¯£¨±ÈÈçÆÁÄ»·½ÏòµÄ¸Ä±ä£¬ÊµÌå¼üÅÌµÄÍÆ¿ª»òºÏÉÏµÈ£©Ê±£¬
-	 *            ²¢ÇÒÈç¹û´ËÊ±ÓĞactivityÕıÔÚÔËĞĞ£¬ÏµÍ³»áµ÷ÓÃÕâ¸öº¯Êı¡£
-	 *            ×¢Òâ£ºonConfigurationChangedÖ»»á¼à²âÓ¦ÓÃ³ÌĞòÔÚAnroidMainifest.xmlÖĞÍ¨¹ı
-	 *            android:configChanges="xxxx"Ö¸¶¨µÄÅäÖÃÀàĞÍµÄ¸Ä¶¯£»
-	 *            ¶ø¶ÔÓÚÆäËûÅäÖÃµÄ¸ü¸Ä£¬ÔòÏµÍ³»áonDestroy()µ±Ç°Activity£¬È»ºóÖØÆôÒ»¸öĞÂµÄActivityÊµÀı¡£
+	 *            å½“è®¾å¤‡é…ç½®ä¿¡æ¯æœ‰æ”¹åŠ¨ï¼ˆæ¯”å¦‚å±å¹•æ–¹å‘çš„æ”¹å˜ï¼Œå®ä½“é”®ç›˜çš„æ¨å¼€æˆ–åˆä¸Šç­‰ï¼‰æ—¶ï¼Œ
+	 *            å¹¶ä¸”å¦‚æœæ­¤æ—¶æœ‰activityæ­£åœ¨è¿è¡Œï¼Œç³»ç»Ÿä¼šè°ƒç”¨è¿™ä¸ªå‡½æ•°ã€‚
+	 *            æ³¨æ„ï¼šonConfigurationChangedåªä¼šç›‘æµ‹åº”ç”¨ç¨‹åºåœ¨AnroidMainifest.xmlä¸­é€šè¿‡
+	 *            android:configChanges="xxxx"æŒ‡å®šçš„é…ç½®ç±»å‹çš„æ”¹åŠ¨ï¼›
+	 *            è€Œå¯¹äºå…¶ä»–é…ç½®çš„æ›´æ”¹ï¼Œåˆ™ç³»ç»Ÿä¼šonDestroy()å½“å‰Activityï¼Œç„¶åé‡å¯ä¸€ä¸ªæ–°çš„Activityå®ä¾‹ã€‚
 	 */
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-			// µ±Ç°ÎªºáÆÁ£¬ ÔÚ´Ë´¦Ìí¼Ó¶îÍâµÄ´¦Àí´úÂë
+			// å½“å‰ä¸ºæ¨ªå±ï¼Œ åœ¨æ­¤å¤„æ·»åŠ é¢å¤–çš„å¤„ç†ä»£ç 
 			if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO) {
-				// ÊµÌå¼üÅÌ´¦ÓÚÍÆ³ö×´Ì¬£¬ÔÚ´Ë´¦Ìí¼Ó¶îÍâµÄ´¦Àí´úÂë
+				// å®ä½“é”®ç›˜å¤„äºæ¨å‡ºçŠ¶æ€ï¼Œåœ¨æ­¤å¤„æ·»åŠ é¢å¤–çš„å¤„ç†ä»£ç 
 				landscape(false);
 			} else if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_YES) {
-				// ÊµÌå¼üÅÌ´¦ÓÚºÏÉÏ×´Ì¬£¬ÔÚ´Ë´¦Ìí¼Ó¶îÍâµÄ´¦Àí´úÂë
+				// å®ä½“é”®ç›˜å¤„äºåˆä¸ŠçŠ¶æ€ï¼Œåœ¨æ­¤å¤„æ·»åŠ é¢å¤–çš„å¤„ç†ä»£ç 
 				landscape(true);
 			}
 		} else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-			// µ±Ç°ÎªÊúÆÁ£¬ÔÚ´Ë´¦Ìí¼Ó¶îÍâµÄ´¦Àí´úÂë
+			// å½“å‰ä¸ºç«–å±ï¼Œåœ¨æ­¤å¤„æ·»åŠ é¢å¤–çš„å¤„ç†ä»£ç 
 			if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO) {
-				// ÊµÌå¼üÅÌ´¦ÓÚÍÆ³ö×´Ì¬£¬ÔÚ´Ë´¦Ìí¼Ó¶îÍâµÄ´¦Àí´úÂë
+				// å®ä½“é”®ç›˜å¤„äºæ¨å‡ºçŠ¶æ€ï¼Œåœ¨æ­¤å¤„æ·»åŠ é¢å¤–çš„å¤„ç†ä»£ç 
 				portrait(false);
 			} else if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_YES) {
-				// ÊµÌå¼üÅÌ´¦ÓÚºÏÉÏ×´Ì¬£¬ÔÚ´Ë´¦Ìí¼Ó¶îÍâµÄ´¦Àí´úÂë
+				// å®ä½“é”®ç›˜å¤„äºåˆä¸ŠçŠ¶æ€ï¼Œåœ¨æ­¤å¤„æ·»åŠ é¢å¤–çš„å¤„ç†ä»£ç 
 				portrait(true);
 			}
 		}
 	}
 
 	/**
-	 * ºáÆÁ
+	 * æ¨ªå±
 	 * 
 	 * @param keyboard
-	 *            trueÈí¼üÅÌºÏÉÏ×´Ì¬
+	 *            trueè½¯é”®ç›˜åˆä¸ŠçŠ¶æ€
 	 */
 	public abstract void landscape(boolean keyboard);
 
 	/**
-	 * ÊúÆÁ
+	 * ç«–å±
 	 * 
 	 * @param keyboard
-	 *            trueÈí¼üÅÌºÏÉÏ×´Ì¬
+	 *            trueè½¯é”®ç›˜åˆä¸ŠçŠ¶æ€
 	 */
 	public abstract void portrait(boolean keyboard);
 
 	/**
-	 * ¶ÌÊ±¼äÄÚÖ»ÓĞÒ»¸ö¿Ø¼ş±»µã»÷ÓĞĞ§
+	 * çŸ­æ—¶é—´å†…åªæœ‰ä¸€ä¸ªæ§ä»¶è¢«ç‚¹å‡»æœ‰æ•ˆ
 	 * 
 	 * @param v
 	 */
 	public abstract void onSingleClick(View v);
 
 	/**
-	 * ³õÊ¼»¯¿Ø¼ş
+	 * åˆå§‹åŒ–æ§ä»¶
 	 * 
 	 * @param view
-	 *            ²¼¾Ö
+	 *            å¸ƒå±€
 	 * @param id
-	 *            ¿Ø¼şId
+	 *            æ§ä»¶Id
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
@@ -126,26 +126,26 @@ public abstract class BaseFragment extends Fragment implements OnTouchListener, 
 	}
 
 	/**
-	 * ÉèÖÃ²¼¾Öid
+	 * è®¾ç½®å¸ƒå±€id
 	 * 
 	 * @return
 	 */
 	public abstract int setLayout();
 
 	/**
-	 * ÉèÖÃ²¼¾ÖÇ°²Ù×÷
+	 * è®¾ç½®å¸ƒå±€å‰æ“ä½œ
 	 * 
 	 * @param savedInstanceState
 	 */
 	public abstract void beforeInitView(Bundle savedInstanceState);
 
 	/**
-	 * ³õÊ¼»¯¿Ø¼ş
+	 * åˆå§‹åŒ–æ§ä»¶
 	 */
 	public abstract void initView();
 
 	/**
-	 * ³õÊ¼»¯¿Ø¼şºó²Ù×÷
+	 * åˆå§‹åŒ–æ§ä»¶åæ“ä½œ
 	 */
 	public abstract void afterInitView();
 

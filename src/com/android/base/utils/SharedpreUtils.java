@@ -26,13 +26,13 @@ public class SharedpreUtils {
 	}
 
 	private void createSharedPre(Context context, String name) {
-		preferences = context.getSharedPreferences(name, Context.MODE_PRIVATE); // 私有数据
+		preferences = context.getSharedPreferences(name, Context.MODE_PRIVATE); // 绉佹湁鏁版嵁
 		editor = preferences.edit();
 		sharedpreName = name;
 	}
 
 	/**
-	 * 得到默认名称的sharepreferencce
+	 * 寰楀埌榛樿鍚嶇О鐨剆harepreferencce
 	 * 
 	 * @param context
 	 * @return
@@ -42,11 +42,11 @@ public class SharedpreUtils {
 	}
 
 	/**
-	 * 得到指定名称的sharepreferencce
+	 * 寰楀埌鎸囧畾鍚嶇О鐨剆harepreferencce
 	 * 
 	 * @param context
 	 * @param name
-	 *            不能为空，为空是默认名称的sharepreferencce
+	 *            涓嶈兘涓虹┖锛屼负绌烘槸榛樿鍚嶇О鐨剆harepreferencce
 	 * @return
 	 */
 	public static SharedpreUtils getInstance(Context context, String name) {

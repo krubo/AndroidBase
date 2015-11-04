@@ -1,17 +1,17 @@
 package com.android.base.utils;
 
 /**
- * ×Ö·û´®¹¤¾ß¼¯
+ * å­—ç¬¦ä¸²å·¥å…·é›†
  * 
  * @author krubo
  *
  */
 public class StringUtils {
 	/**
-	 * ×Ö·û´®ÊÇ·ñÎª¿Õ
+	 * å­—ç¬¦ä¸²æ˜¯å¦ä¸ºç©º
 	 * 
 	 * @param str
-	 * @return true ¿Õ
+	 * @return true ç©º
 	 */
 	public static boolean isEmpty(String str) {
 		if (str == null || str.length() == 0) {
@@ -21,10 +21,10 @@ public class StringUtils {
 	}
 
 	/**
-	 * ×Ö·û´®trimºóÊÇ·ñÎª¿Õ
+	 * å­—ç¬¦ä¸²trimåæ˜¯å¦ä¸ºç©º
 	 * 
 	 * @param str
-	 * @return true ¿Õ
+	 * @return true ç©º
 	 */
 	public static boolean isEmptyByTrim(String str) {
 		if (str == null || str.trim().length() == 0) {

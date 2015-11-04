@@ -3,7 +3,7 @@ package com.android.base.db;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * Êı¾İ¿â²Ù×÷Àà½Ó¿Ú
+ * æ•°æ®åº“æ“ä½œç±»æ¥å£
  * 
  * @author krubo
  *
@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 public interface DBManagerInterface {
 
 	/**
-	 * °æ±¾Éı¼¶
+	 * ç‰ˆæœ¬å‡çº§
 	 * 
 	 * @param db
 	 * @param oldVersion
@@ -20,7 +20,7 @@ public interface DBManagerInterface {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion);
 
 	/**
-	 * ´´½¨Êı¾İ¿â£¬´´½¨±í
+	 * åˆ›å»ºæ•°æ®åº“ï¼Œåˆ›å»ºè¡¨
 	 * 
 	 * @param db
 	 */
