@@ -104,7 +104,7 @@ public class DBDao<T> {
 	 * @return
 	 */
 	public List<T> query(String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
-		List<T> list = new ArrayList<>();
+		List<T> list = new ArrayList<T>();
 		Cursor cursor = null;
 		try {
 			cursor = DBManager.getInstance().getDb().query(table, null, selection, selectionArgs, groupBy, having,

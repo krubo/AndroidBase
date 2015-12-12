@@ -31,7 +31,7 @@ public abstract class BaseFragmentV4 extends Fragment implements OnTouchListener
 	protected OnSingleClickListener OnSingleClickListener = new OnSingleClickListener() {
 
 		@Override
-		public void onSingleClick(View v) {
+		public void onSingleClickListener(View v) {
 			onSingleClick(v);
 		}
 	};
@@ -121,8 +121,8 @@ public abstract class BaseFragmentV4 extends Fragment implements OnTouchListener
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	protected <T extends View> T findView(View view, int id) {
-		return (T) view.findViewById(id);
+	protected <T extends View> T findView(int id) {
+		return (T) contentView.findViewById(id);
 	}
 
 	/**

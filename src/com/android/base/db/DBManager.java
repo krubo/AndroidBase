@@ -32,7 +32,7 @@ public class DBManager {
 
 	public void init(Context context, String name, int version, DBManagerInterface dbManagerInterface) {
 		if (dbHelper == null) {
-			dbHelper = new DBHelper(context, name, null, version);
+			dbHelper = new DBHelper(context.getApplicationContext(), name, null, version);
 			dbHelper.setDbManagerInterface(dbManagerInterface);
 			db = dbHelper.getWritableDatabase();
 		}

@@ -29,7 +29,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements O
 	protected OnSingleClickListener OnSingleClickListener = new OnSingleClickListener() {
 
 		@Override
-		public void onSingleClick(View v) {
+		public void onSingleClickListener(View v) {
 			onSingleClick(v);
 		}
 	};

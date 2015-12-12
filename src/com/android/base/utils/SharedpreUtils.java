@@ -26,7 +26,7 @@ public class SharedpreUtils {
 	}
 
 	private void createSharedPre(Context context, String name) {
-		preferences = context.getSharedPreferences(name, Context.MODE_PRIVATE); // 私有数据
+		preferences = context.getApplicationContext().getSharedPreferences(name, Context.MODE_PRIVATE); // 私有数据
 		editor = preferences.edit();
 		sharedpreName = name;
 	}

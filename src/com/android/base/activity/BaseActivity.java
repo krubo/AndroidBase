@@ -28,7 +28,7 @@ public abstract class BaseActivity extends Activity implements OnTouchListener, 
 	protected OnSingleClickListener OnSingleClickListener = new OnSingleClickListener() {
 
 		@Override
-		public void onSingleClick(View v) {
+		public void onSingleClickListener(View v) {
 			onSingleClick(v);
 		}
 	};

@@ -39,7 +39,7 @@ public class LogUtils {
 	}
 
 	public static void v(Context context, int resId) {
-		v(context.getString(resId));
+		v(context.getApplicationContext().getString(resId));
 	}
 
 	public static void d(String msg) {
@@ -50,7 +50,7 @@ public class LogUtils {
 	}
 
 	public static void d(Context context, int resId) {
-		d(context.getString(resId));
+		d(context.getApplicationContext().getString(resId));
 	}
 
 	public static void i(String msg) {
@@ -61,7 +61,7 @@ public class LogUtils {
 	}
 
 	public static void i(Context context, int resId) {
-		i(context.getString(resId));
+		i(context.getApplicationContext().getString(resId));
 	}
 
 	public static void w(String msg) {
@@ -72,7 +72,7 @@ public class LogUtils {
 	}
 
 	public static void w(Context context, int resId) {
-		w(context.getString(resId));
+		w(context.getApplicationContext().getString(resId));
 	}
 
 	public static void e(String msg) {
@@ -83,7 +83,7 @@ public class LogUtils {
 	}
 
 	public static void e(Context context, int resId) {
-		e(context.getString(resId));
+		e(context.getApplicationContext().getString(resId));
 	}
 
 	public static void wtf(String message) {
@@ -94,7 +94,7 @@ public class LogUtils {
 	}
 
 	public static void wtf(Context context, int resId) {
-		wtf(context.getString(resId));
+		wtf(context.getApplicationContext().getString(resId));
 	}
 
 }

@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
 	private PersonDao personDao;
 	private Person xiaoming;
 	private Person xiaohong;
+	private TestDialog dialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +72,9 @@ public class MainActivity extends Activity {
 		});
 		personDao = new PersonDao(Person.class);
 		xiaoming = new Person();
-		xiaoming.setName("–°√˜?,@#$%^&^*!");
+		xiaoming.setName("Â∞èÊòé");
 		xiaoming.setSex(true);
-		xiaoming.setAddr("∫£µÌ…œµÿ");
+		xiaoming.setAddr("Êµ∑Ê∑ÄÂå∫");
 		xiaoming.setAge(22);
 		xiaoming.setGroup(1);
 		xiaoming.setHeight(171.3f);
@@ -82,15 +83,40 @@ public class MainActivity extends Activity {
 		xiaoming.setWeight(68.123d);
 
 		xiaohong = new Person();
-		xiaohong.setName("–°∫Ï");
+		xiaohong.setName("Â∞èÁ∫¢");
 		xiaohong.setSex(false);
-		xiaohong.setAddr("≥Ø—Ù");
+		xiaohong.setAddr("ÊúùÈò≥Âå∫");
 		xiaohong.setAge(24);
 		xiaohong.setGroup(3);
 		xiaohong.setHeight(161.9f);
 		xiaohong.setId((short) 2);
 		xiaohong.setTime(System.currentTimeMillis());
 		xiaohong.setWeight(60.665d);
+		if (dialog == null) {
+			dialog = (TestDialog) getFragmentManager().findFragmentByTag("testDialog");
+			if (dialog == null) {
+				dialog = new TestDialog();
+			}
+		}
+		if (!dialog.isAdded()) {
+			dialog.show(getFragmentManager(), "testDialog");
+		}
+		findViewById(R.id.dialog).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (dialog == null) {
+					dialog = (TestDialog) getFragmentManager().findFragmentByTag("testDialog");
+					if (dialog == null) {
+						dialog = new TestDialog();
+					}
+				}
+				if (!dialog.isAdded()) {
+					dialog.show(getFragmentManager(), "testDialog");
+				}
+			}
+		});
 
 	}
 

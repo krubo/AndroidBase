@@ -15,13 +15,13 @@ public class ToastUtils {
 
 	private static void show(Context context, CharSequence text, int duration, boolean showMust) {
 		if (showMust || ConstantBase.DEBUG_TOAST) {
-			Toast.makeText(context, text, duration).show();
+			Toast.makeText(context.getApplicationContext(), text, duration).show();
 		}
 	}
 
 	private static void show(Context context, int resId, int duration, boolean showMust) {
 		if (showMust || ConstantBase.DEBUG_TOAST) {
-			Toast.makeText(context, resId, duration).show();
+			Toast.makeText(context.getApplicationContext(), resId, duration).show();
 		}
 	}
 
@@ -32,7 +32,7 @@ public class ToastUtils {
 	 * @param resId
 	 */
 	public static void showMustShort(Context context, int resId) {
-		show(context, resId, Toast.LENGTH_SHORT, true);
+		show(context.getApplicationContext(), resId, Toast.LENGTH_SHORT, true);
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class ToastUtils {
 	 * @param text
 	 */
 	public static void showMustShort(Context context, CharSequence text) {
-		show(context, text, Toast.LENGTH_SHORT, true);
+		show(context.getApplicationContext(), text, Toast.LENGTH_SHORT, true);
 	}
 
 	/**
@@ -52,7 +52,7 @@ public class ToastUtils {
 	 * @param resId
 	 */
 	public static void showMustLong(Context context, int resId) {
-		show(context, resId, Toast.LENGTH_LONG, true);
+		show(context.getApplicationContext(), resId, Toast.LENGTH_LONG, true);
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class ToastUtils {
 	 * @param text
 	 */
 	public static void showMustLong(Context context, CharSequence text) {
-		show(context, text, Toast.LENGTH_LONG, true);
+		show(context.getApplicationContext(), text, Toast.LENGTH_LONG, true);
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class ToastUtils {
 	 * @param resId
 	 */
 	public static void showShort(Context context, int resId) {
-		show(context, resId, Toast.LENGTH_SHORT, false);
+		show(context.getApplicationContext(), resId, Toast.LENGTH_SHORT, false);
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class ToastUtils {
 	 * @param text
 	 */
 	public static void showShort(Context context, CharSequence text) {
-		show(context, text, Toast.LENGTH_SHORT, false);
+		show(context.getApplicationContext(), text, Toast.LENGTH_SHORT, false);
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class ToastUtils {
 	 * @param resId
 	 */
 	public static void showLong(Context context, int resId) {
-		show(context, resId, Toast.LENGTH_LONG, false);
+		show(context.getApplicationContext(), resId, Toast.LENGTH_LONG, false);
 	}
 
 	/**
@@ -102,6 +102,6 @@ public class ToastUtils {
 	 * @param text
 	 */
 	public static void showLong(Context context, CharSequence text) {
-		show(context, text, Toast.LENGTH_LONG, false);
+		show(context.getApplicationContext(), text, Toast.LENGTH_LONG, false);
 	}
 }
