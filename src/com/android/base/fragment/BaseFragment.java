@@ -42,11 +42,11 @@ public abstract class BaseFragment extends Fragment implements OnTouchListener, 
 		this.activity = getActivity();
 		this.context = getActivity().getApplicationContext();
 		this.gestureDetector = new GestureDetector(this.context, this);
-		beforeInitView(savedInstanceState);
 	};
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		beforeInitView(savedInstanceState);
 		contentView = inflater.inflate(setLayout(), null);
 		initView();
 		afterInitView();

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_48DP"
+        android:gravity="center"
+        android:text="@string/exit_app"
+        android:textSize="@dimen/textsize_large" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_1DP"
+        android:background="@color/color_cccccc" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_48DP"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/dialog_exitapp_cancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="@string/cancel"
+            android:textSize="@dimen/textsize_large" />
+
+        <Button
+            android:id="@+id/dialog_exitapp_certain"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="@string/certain"
+            android:textSize="@dimen/textsize_large" />
+    </LinearLayout>
+
+</LinearLayout>

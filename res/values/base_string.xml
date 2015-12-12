@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="single_click">操作频繁，请稍后</string>
+    <string name="reminder">提示</string>
+    <string name="exit_app">是否退出程序</string>
+    <string name="certain">确定</string>
+    <string name="cancel">取消</string>
+    <string name="exit_app_click_again">再次点击退出</string>
+
 </resources>

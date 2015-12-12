@@ -23,18 +23,6 @@ public class TestDialog extends BaseDialogFragment {
 	}
 
 	@Override
-	public void landscape(boolean keyboard) {
-		// TODO Auto-generated method stub
-		ToastUtils.showMustShort(context, "横屏");
-	}
-
-	@Override
-	public void portrait(boolean keyboard) {
-		// TODO Auto-generated method stub
-		ToastUtils.showMustShort(context, "竖屏");
-	}
-
-	@Override
 	public void onSingleClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
@@ -59,7 +47,7 @@ public class TestDialog extends BaseDialogFragment {
 	@Override
 	public void beforeInitView(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-
+		getDialog().setTitle("弹窗");
 	}
 
 	@Override

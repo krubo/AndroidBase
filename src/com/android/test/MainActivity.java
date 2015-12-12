@@ -5,10 +5,12 @@ import java.util.List;
 import com.android.base.R;
 import com.android.base.db.DBManager;
 import com.android.base.db.DBManagerInterface;
+import com.android.base.utils.AppUtils;
 
 import android.app.Activity;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +23,15 @@ public class MainActivity extends Activity {
 	private Person xiaoming;
 	private Person xiaohong;
 	private TestDialog dialog;
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+//			AppUtils.exitAppWithDialog(this);
+			AppUtils.exitAppWithToast(this);
+		}
+		return false;
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,15 +103,6 @@ public class MainActivity extends Activity {
 		xiaohong.setId((short) 2);
 		xiaohong.setTime(System.currentTimeMillis());
 		xiaohong.setWeight(60.665d);
-		if (dialog == null) {
-			dialog = (TestDialog) getFragmentManager().findFragmentByTag("testDialog");
-			if (dialog == null) {
-				dialog = new TestDialog();
-			}
-		}
-		if (!dialog.isAdded()) {
-			dialog.show(getFragmentManager(), "testDialog");
-		}
 		findViewById(R.id.dialog).setOnClickListener(new OnClickListener() {
 
 			@Override
