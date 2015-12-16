@@ -9,7 +9,7 @@
         android:layout_height="@dimen/DIMEN_48DP"
         android:gravity="center"
         android:text="@string/exit_app"
-        android:textSize="@dimen/textsize_large" />
+        android:textSize="@dimen/textsize_larger" />
 
     <View
         android:layout_width="match_parent"
@@ -29,6 +29,11 @@
             android:background="@null"
             android:text="@string/cancel"
             android:textSize="@dimen/textsize_large" />
+
+        <View
+            android:layout_width="@dimen/DIMEN_1DP"
+            android:layout_height="match_parent"
+            android:background="@color/color_cccccc" />
 
         <Button
             android:id="@+id/dialog_exitapp_certain"

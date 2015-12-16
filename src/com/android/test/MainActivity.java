@@ -1,21 +1,35 @@
 package com.android.test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.android.base.R;
 import com.android.base.db.DBManager;
 import com.android.base.db.DBManagerInterface;
+import com.android.base.http.HttpService;
 import com.android.base.utils.AppUtils;
+import com.android.base.utils.LogUtils;
+import com.android.base.utils.ToastUtils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 public class MainActivity extends Activity {
 	private TextView content;
@@ -27,8 +41,8 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-//			AppUtils.exitAppWithDialog(this);
-			AppUtils.exitAppWithToast(this);
+			AppUtils.exitAppWithDialog(this);
+			// AppUtils.exitAppWithToast(this);
 		}
 		return false;
 	}
@@ -53,6 +67,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				personDao.delete(xiaoming);
+				showToast("delete");
 			}
 		});
 		findViewById(R.id.query).setOnClickListener(new OnClickListener() {
@@ -120,6 +135,40 @@ public class MainActivity extends Activity {
 			}
 		});
 
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userName", "ZhangSan");
+		map.put("sex", "男");
+		HttpService.getInstance().setBaseUrl("http://10.2.19.210:8080").getInterface(TestInterface.class).getData(map)
+				.enqueue(new Callback<ResponeData<UserBean>>() {
+
+					@Override
+					public void onResponse(Response<ResponeData<UserBean>> response, Retrofit retrofit) {
+						// TODO Auto-generated method stub
+						if (response != null && response.body() != null) {
+							LogUtils.i(response.body().toString());
+						} else {
+							LogUtils.i("request data null");
+						}
+					}
+
+					@Override
+					public void onFailure(Throwable t) {
+						// TODO Auto-generated method stub
+						LogUtils.i("request failure");
+					}
+				});
+	}
+
+	public void showToast(String text) {
+		Toast result = new Toast(getApplicationContext());
+		LayoutInflater inflate = (LayoutInflater) getApplicationContext()
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View v = inflate.inflate(R.layout.toast_test, null);
+		TextView tv = (TextView) v.findViewById(R.id.toast_msg);
+		tv.setText(text);
+		result.setView(v);
+		result.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 20);
+		result.show();
 	}
 
 	@Override
